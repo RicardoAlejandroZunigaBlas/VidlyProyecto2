@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using Microsoft.AspNet.Identity;
 
 namespace Vidly.Controllers
 {
-    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()

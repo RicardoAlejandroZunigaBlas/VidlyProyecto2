@@ -14,6 +14,8 @@
         <tr>
             <th>Movie</th>
             <th>Genre</th>
+            <th>Number in Stock</th>
+            <th>Release Date</th>
             <th>Delete</th>
         </tr>
     </thead>
@@ -24,27 +26,33 @@
 {
     <script>
         $(document).ready(function () {
-            var table = $("#movies").DataTable({
-                ajax: {
-                    url: "/api/movies",
-                    dataSrc: ""
-                },
-                columns: [
-                    {
-                        data: "name",
-                        render: function (data, type, movie) {
-                            return "<a href='/movies/edit/" + movie.id + "'>" + movie.name + "</a>";
-                        }
+                var table = $("#movies").DataTable({
+                    ajax: {
+                        url: "/api/movies",
+                        dataSrc: ""
                     },
-                    {
-                        data: "genre.name"
-                    },
-                    {
-                        data: "id",
-                        render: function (data) {
+                    columns: [
+                        {
+                            data: "name",
+                            render: function(data, type, movie) {
+                                return "<a href='/movies/edit/" + movie.id + "'>" + movie.name + "</a>";
+                            }
+                        },
+                        {
+                            data: "genre.name"
+                        },
+                        {
+                            data: "numberInStock"
+                        },
+                        {
+                            data: "releaseDate"
+                        },
+                        {
+                            data: "id",
+                            render: function (data) {
                             return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
+                            }
                         }
-                    }
                 ]
             });
             $("#movies").on("click", ".js-delete", function () {
