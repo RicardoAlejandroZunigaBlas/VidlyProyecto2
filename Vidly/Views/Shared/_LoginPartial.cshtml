@@ -1,6 +1,11 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using Microsoft.AspNet.Identity 
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
 @if (Request.IsAuthenticated)
 {
+    
+    @Html.ActionLink("Vidly", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     <ul class="nav navbar-nav navbar-left">
         <li>@Html.ActionLink("New Rental", "New", "Rentals")</li>
         <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
