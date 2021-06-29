@@ -56,6 +56,10 @@ namespace Vidly.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return View("~/Views/Home/Index.cshtml");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -331,6 +335,10 @@ namespace Vidly.Controllers
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
+            }
+            else
+            {
+                return RedirectToAction("Index","Home");
             }
 
             // Si el usuario ya tiene un inicio de sesión, iniciar sesión del usuario con este proveedor de inicio de sesión externo
